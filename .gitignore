@@ -35,8 +35,7 @@ db.sqlite3
 media/
 staticfiles/
 static/
-.env
-.env.*
+
 
 # If you use virtualenv:
 venv/
