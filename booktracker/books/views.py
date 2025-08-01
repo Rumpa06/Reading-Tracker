@@ -46,7 +46,7 @@ def dashboard(request):
     # Most read authors
     most_read_authors = Book.objects.values('author').annotate(
         count=Count('id')
-    ).order_by('-count')[:5]  # Top 5 authors
+    ).order_by('-count')[:5]
 
     chart_data = json.dumps(list(book_counts))
     author_data = json.dumps(list(most_read_authors))
