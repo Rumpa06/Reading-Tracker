@@ -96,7 +96,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'defaultdb',
         'USER': 'avnadmin',
-        'PASSWORD':'AVNS_6aTCVnO6xT9qLbCB8y8',
+        'PASSWORD':os.environ.get('DB_PASSWORD'),
         'HOST':'pg-13b499f9-book-tracker.d.aivencloud.com' ,
         'PORT': 11211,
          'OPTIONS': {
