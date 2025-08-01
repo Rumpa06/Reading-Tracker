@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'booktracker.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -88,6 +88,20 @@ DATABASES = {
         'PASSWORD': 'Rumpa@123',
         'HOST': 'localhost',
         'PORT': '5432',
+    }
+}
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'defaultdb',
+        'USER': 'avnadmin',
+        'PASSWORD':'AVNS_6aTCVnO6xT9qLbCB8y8',
+        'HOST':'pg-13b499f9-book-tracker.d.aivencloud.com' ,
+        'PORT': 11211,
+         'OPTIONS': {
+            'sslmode': 'require'  
+        },
     }
 }
 
