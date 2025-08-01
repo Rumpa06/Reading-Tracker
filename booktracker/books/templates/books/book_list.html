@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Saved Books</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6 text-center text-indigo-700">📚 My Saved Books</h1>
+
+        {% if books %}
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {% for book in books %}
+                    <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-xl transition duration-300">
+                        {% if book.thumbnail %}
+                            <img src="{{ book.thumbnail }}" alt="Book cover" class="w-full h-64 object-contain mb-4 rounded">
+                        {% else %}
+                            <div class="w-full h-64 flex items-center justify-center bg-gray-200 text-gray-500 mb-4 rounded">
+                                No Image
+                            </div>
+                        {% endif %}
+                        
+                        <h2 class="text-lg font-semibold text-gray-800">{{ book.title }}</h2>
+                        <p class="text-sm text-gray-600 mt-1">by {{ book.author }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center text-gray-500 text-lg">
+                No books saved yet.
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
