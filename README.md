@@ -1,4 +1,4 @@
-# App Name - ookTracker
+# App Name - BookTracker
 
 BookTracker is a Django-based web application that allows users to search for books using the Google Books API, save favorite books, and manage their own personal library. It includes user registration and authentication, a dashboard to view saved books, and a REST API for CRUD operations on books.
 
