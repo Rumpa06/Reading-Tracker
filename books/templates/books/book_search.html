@@ -11,7 +11,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 40px auto;
             padding: 20px;
             background: #ffffff;
@@ -22,6 +22,7 @@
         h1 {
             text-align: center;
             color: #333;
+            font-size: 28px;
         }
 
         form {
@@ -34,7 +35,7 @@
             width: 60%;
             border: 1px solid #ccc;
             border-radius: 6px;
-            font-size: 16px;
+            font-size: 15px;
         }
 
         button {
@@ -42,7 +43,7 @@
             background-color: #4CAF50;
             color: white;
             border: none;
-            font-size: 16px;
+            font-size: 15px;
             border-radius: 6px;
             cursor: pointer;
             margin-left: 10px;
@@ -52,70 +53,82 @@
             background-color: #45a049;
         }
 
-        .book {
+        .results {
             display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .book {
+            width: 220px;
+            background: #fdfdfd;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+            padding: 12px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
         }
 
         .book img {
-            width: 100px;
+            max-width: 120px;
             height: auto;
-            margin-right: 20px;
-            border-radius: 5px;
+            margin-bottom: 10px;
+            border-radius: 4px;
         }
 
-        .book-info {
-            flex: 1;
-        }
-
-        .book-info h3 {
-            margin: 0 0 8px 0;
-            font-size: 20px;
+        .book h3 {
+            font-size: 16px;
+            margin: 8px 0 4px 0;
             color: #222;
         }
 
-        .book-info p {
-            margin: 0 0 12px 0;
+        .book p {
+            font-size: 14px;
             color: #555;
+            margin: 0 0 10px 0;
         }
 
         .book form {
-            display: inline-block;
-            margin-top: 10px;
+            width: 100%;
         }
 
-        hr {
-            border: none;
-            border-top: 1px solid #eee;
-            margin: 30px 0;
+        .book button {
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .no-results {
+            text-align: center;
+            font-size: 16px;
+            color: #777;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Search Books with Google Books API</h1>
+        <h1>Find Your Next Favorite Book</h1>
         
         <form method="get">
-            <input type="text" name="q" value="{{ query }}" placeholder="Enter book title or keyword">
+            <input type="text" name="q" value="{{ query|default:'' }}" placeholder="Enter the title or keyword of the book">
             <button type="submit">Search</button>
         </form>
 
         {% if results %}
-            <h2>Results:</h2>
-            {% for book in results %}
-                <div class="book">
-                    {% if book.volumeInfo.imageLinks %}
-                        <img src="{{ book.volumeInfo.imageLinks.thumbnail }}" alt="Book Cover">
-                    {% endif %}
-                    <div class="book-info">
+            <div class="results">
+                {% for book in results %}
+                    <div class="book">
+                        {% if book.volumeInfo.imageLinks %}
+                            <img src="{{ book.volumeInfo.imageLinks.thumbnail }}" alt="Book Cover">
+                        {% endif %}
                         <h3>{{ book.volumeInfo.title }}</h3>
                         {% if book.volumeInfo.authors %}
                             <p>by {{ book.volumeInfo.authors|join:", " }}</p>
                         {% endif %}
-                        
+
                         <form method="post" action="{% url 'save_book' %}">
                             {% csrf_token %}
                             <input type="hidden" name="title" value="{{ book.volumeInfo.title }}">
@@ -125,10 +138,10 @@
                             <button type="submit">Save to My Collection</button>
                         </form>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         {% elif query %}
-            <p>No results found for "{{ query }}". Try a different keyword.</p>
+            <p class="no-results">No results found for "{{ query }}". Try a different keyword.</p>
         {% endif %}
     </div>
 </body>
