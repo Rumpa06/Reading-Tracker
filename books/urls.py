@@ -7,7 +7,6 @@ from . import views
 router = DefaultRouter()
 router.register(r'', BookViewSet, basename='book')
 
-
 urlpatterns = [
     path('', book_search, name='home'),  # renders on root URL
     path('api/', include(router.urls)),

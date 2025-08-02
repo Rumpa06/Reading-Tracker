@@ -1,58 +1,71 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-*$py.class
+*.pyo
+*.pyd
+*.pyc
 
 # C extensions
 *.so
 
-# Distribution / packaging
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
 .Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
 
 # Django stuff:
 *.log
 *.pot
 *.pyc
-*.pyo
-*.pyd
 *.sqlite3
-db.sqlite3
-*.db
 media/
 staticfiles/
-static/
 
-
-# If you use virtualenv:
-venv/
-ENV/
-env/
-.venv/
-pip-selfcheck.json
-
-# VS Code
-.vscode/
-
-# Mac OS
-.DS_Store
-
-# PyCharm
-.idea/
-
-# Migrations
-**/migrations/*.py
+# Django migrations cache
 **/migrations/__pycache__/
+**/migrations/*.pyc
+**/migrations/*.pyo
+
+# Postgres local dump files
+*.psql
+*.sql
+*.dump
+
+# Environment files (secrets should NEVER be committed)
+.env
+.env.*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDEs and editor folders
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Testing / coverage tools
+.coverage
+*.cover
+htmlcov/
+.tox/
+.nox/
+.cache/
+nosetests.xml
+coverage.xml
+test-results/
+
+# Node-related (if using for frontend)
+node_modules/
+package-lock.json
+yarn.lock
+
+# PyInstaller
+build/
+dist/
+*.spec
