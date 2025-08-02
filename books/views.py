@@ -20,21 +20,7 @@ class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
-
-# API Integration - Google Books API
-@api_view(['GET'])
-def google_books_search(request):
-    query = request.GET.get('q')
-    if not query:
-        return Response({'error': 'No query provided'}, status=400)
-
-    url = f'https://www.googleapis.com/books/v1/volumes?q={query}&key={settings.GOOGLE_BOOKS_API_KEY}'
-    response = requests.get(url)
-    return Response(response.json())
-
-
 # Dashboard View - Data Visualization from DB
-
 def dashboard(request):
     # Count of total books
     total_books = Book.objects.count()

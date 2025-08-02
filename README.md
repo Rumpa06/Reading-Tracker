@@ -1,21 +1,18 @@
-# 📚 BookTracker
+# App Name - ookTracker
 
 BookTracker is a Django-based web application that allows users to search for books using the Google Books API, save favorite books, and manage their own personal library. It includes user registration and authentication, a dashboard to view saved books, and a REST API for CRUD operations on books.
 
----
 
-## 🚀 Features
+## Features
 
-✅ Search for books via Google Books API  
-✅ Save books to your personal library  
-✅ View, update, and delete your saved books  
-✅ Django REST API endpoints for book operations  
-✅ User dashboard  for visualization of the data fetched
-✅ Responsive HTML templates for search and dashboard pages
+Search for books via Google Books API  
+Save books to your personal library  
+View, update, and delete your saved books 
+Django REST API endpoints for book operations  
+User dashboard  for visualization of the data fetched
+Responsive HTML templates for search and dashboard pages
 
----
-
-## 📁 Project Structure
+## Project Structure
 
 booktracker/
 ├── books/
@@ -45,7 +42,7 @@ booktracker/
 ├── README.md
 └── requirements.txt
 
-## 🛠️ Setup
+# Setup
 
 ### 1. Clone the repository
 
@@ -89,35 +86,29 @@ Follow the prompts to set username, email, and password.
 python manage.py runserver
 Visit http://127.0.0.1:8000/ in your browser.
 
-### 🔗 Application URLs
+## Application URLs
 Search Books: /search/
-
 Save Book: /save/
-
 My Books Dashboard: /my-books/
 
 API endpoints: /api/
-
 List/Create: GET/POST /api/
-
 Update: PUT /api/<book_id>/
-
 Delete: DELETE /api/<book_id>/
-
 Admin Panel: /admin/
 
-### API Endpoints & Manual Verification
+## API Endpoints & Manual Verification
 API is served under /api/ and provides full CRUD operations:
 
 Method	Endpoint	Purpose-
 
-GET	/api/	List all books
-POST	/api/	Add a new book
-GET	/api/<id>/	Retrieve a book
-PUT	/api/<id>/	Update a book
+GET	    /api/	    List all books
+POST	/api/	    Add a new book
+GET	    /api/<id>/	Retrieve a book
+PUT	    /api/<id>/	Update a book
 DELETE	/api/<id>/	Delete a book
 
 
-### 🧪 Testing your application
+### Testing your application
 You can run unit tests using Django’s test runner:
 python manage.py test
