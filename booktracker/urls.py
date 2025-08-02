@@ -21,8 +21,6 @@ from books import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('books.urls')),      # API endpoints
-    path('', include('books.urls')),   
-    path('', views.book_search, name='search_books'),       # Includes dashboard & others
+    path('', include('books.urls')), 
 ]
 

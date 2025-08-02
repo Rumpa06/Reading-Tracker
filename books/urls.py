@@ -5,9 +5,11 @@ from .views import book_search
 from . import views
 
 router = DefaultRouter()
-router.register(r'books', BookViewSet)
+router.register(r'', BookViewSet, basename='book')
+
 
 urlpatterns = [
+    path('', book_search, name='home'),  # renders on root URL
     path('api/', include(router.urls)),
     path('dashboard/', dashboard),
     path('google-books/', google_books_search),

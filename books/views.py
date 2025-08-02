@@ -36,25 +36,30 @@ def google_books_search(request):
 # Dashboard View - Data Visualization from DB
 
 def dashboard(request):
+    # Count of total books
     total_books = Book.objects.count()
 
     # Books read per year
-    book_counts = Book.objects.annotate(
-        year=ExtractYear('published_date')
-    ).values('year').annotate(count=Count('id')).order_by('year')
+    year_data = (
+        Book.objects.annotate(year=ExtractYear('date_read'))
+        .values('year')
+        .annotate(count=Count('id'))
+        .order_by('year')
+    )
+    chart_data = json.dumps(list(year_data), default=str)
 
-    # Most read authors
-    most_read_authors = Book.objects.values('author').annotate(
-        count=Count('id')
-    ).order_by('-count')[:5]
-
-    chart_data = json.dumps(list(book_counts))
-    author_data = json.dumps(list(most_read_authors))
+    # Top 5 authors
+    top_authors = (
+        Book.objects.values('author')
+        .annotate(count=Count('id'))
+        .order_by('-count')[:5]
+    )
+    author_data = json.dumps(list(top_authors), default=str)
 
     return render(request, 'books/dashboard.html', {
         'total_books': total_books,
         'chart_data': chart_data,
-        'author_data': author_data
+        'author_data': author_data,
     })
 
 # Google Books Search HTML View
@@ -78,7 +83,7 @@ def save_book(request):
             defaults={'thumbnail': thumbnail}
         )
 
-    return redirect('search_books')
+    return redirect('book_search')
 
 def book_list(request):
     books = Book.objects.all()
