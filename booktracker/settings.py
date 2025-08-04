@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-4xgq8&9e=oe#ilmpadq@onay(805wv6e%$bpf(r#i_7$dr(ie(
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['reading-tracker-dm8p.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['reading-tracker-production-6161.up.railway.app', 'localhost', '127.0.0.1']
 
 
 # Application definition
