@@ -5,7 +5,7 @@ from .views import book_search
 from . import views
 
 router = DefaultRouter()
-router.register(r'', BookViewSet, basename='book')
+router.register(r'books', BookViewSet, basename='book')
 
 urlpatterns = [
     path('', book_search, name='home'),  # renders on root URL
