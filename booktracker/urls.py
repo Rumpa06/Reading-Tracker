@@ -4,7 +4,6 @@ from books import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('books.urls')), 
-    path('api/', include('books.urls'))
+    path('', include('books.urls'))
 ]
 
