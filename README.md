@@ -89,24 +89,33 @@ Visit http://127.0.0.1:8000/ in your browser.
 ## Application URLs
 Search Books: /search/
 Save Book: /save/
-My Books Dashboard: /my-books/
+My saved Books : /my-books/
+Dashboard: /dashboard/
 
-API endpoints: /api/
-List/Create: GET/POST /api/
-Update: PUT /api/<book_id>/
-Delete: DELETE /api/<book_id>/
-Admin Panel: /admin/
+API endpoints: /api/books/
+List/Create: GET/POST /api/books/
+Update: PUT /api/books/<book_id>/
+Delete: DELETE /api/books/<book_id>/
+
 
 ## API Endpoints & Manual Verification
-API is served under /api/ and provides full CRUD operations:
+API is served under /api/books and provides full CRUD operations:
 
-Method	Endpoint	Purpose-
+Method    Endpoint              Purpose
+GET       /api/books/           List all books
+POST      /api/books/           Add a new book
+GET       /api/books/<id>/      Retrieve a book
+PUT       /api/books/<id>/      Update a book
+DELETE    /api/books/<id>/      Delete a book
 
-GET	    /api/	    List all books
-POST	/api/	    Add a new book
-GET	    /api/<id>/	Retrieve a book
-PUT	    /api/<id>/	Update a book
-DELETE	/api/<id>/	Delete a book
+## Environment Variables
+.env file should include at least:
+GOOGLE_BOOKS_API_KEY=your-api-secret
+DATABASE_NAME=your_db_name
+DATABASE_USER=your_db_user
+DATABASE_PASSWORD=your_db_password
+DATABASE_HOST=your_db_host
+DATABASE_PORT=your_db_port
 
 
 ### Testing your application
